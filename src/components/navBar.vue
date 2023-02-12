@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.homePath)
+
   }
 }
 </script>
