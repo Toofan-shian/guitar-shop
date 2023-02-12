@@ -36,13 +36,13 @@
         </v-btn>
       </v-toolbar-items>
 
-      <template v-slot:extension v-if="homePath">
+      <!-- <template v-slot:extension v-if="homePath">
         <v-tabs align-center >
           <v-tab>Tab 1</v-tab>
           <v-tab>Tab 2</v-tab>
           <v-tab>Tab 3</v-tab>
         </v-tabs>
-      </template>
+      </template> -->
     </v-app-bar>
 
     <v-navigation-drawer
