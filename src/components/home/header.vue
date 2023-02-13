@@ -1,7 +1,7 @@
 <template>  
   <div>
     <v-img
-      src="@/assets/guitar-shop/bannercopy.jpg"
+      src="/guitar-shop/bannercopy.jpg"
       max-height="500"
       
     >

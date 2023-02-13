@@ -27,6 +27,13 @@ export default new Vuex.Store({
     populars(state) {
       const pops = state.products.filter(p => p.popular == true)
       return pops;
+    },
+    getProductById: (state) => (id) => {
+
+      console.log(state.products)
+      const product = state.products.find(p => p.id == id);
+      console.log(product)
+      return product;
     }
   },
   modules: {

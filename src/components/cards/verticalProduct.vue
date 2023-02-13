@@ -24,6 +24,7 @@
         width="95%"
         outlined
         color="primary"
+        @click="viewDetails"
       >
         view details
       </v-btn>
@@ -37,6 +38,9 @@ export default {
     product: Object,
   },
   methods: {
+    viewDetails() {
+      this.$router.push(`/products/${this.product.id}`)
+    }
   },
   computed: {
     imgSrc() {
