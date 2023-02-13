@@ -2,6 +2,8 @@
   <div>
     <v-img
       src="@/assets/guitar-shop/bannercopy.jpg"
+      max-height="500"
+      
     >
     <template v-slot:placeholder>
       <v-row

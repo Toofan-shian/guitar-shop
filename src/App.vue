@@ -21,3 +21,12 @@ export default {
   }),
 };
 </script>
+
+<style>
+.border {
+  border: 1px solid red;
+}
+.border-b {
+  border: 1px solid blue;
+}
+</style>
