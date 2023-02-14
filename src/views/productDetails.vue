@@ -1,16 +1,47 @@
 <template>
-  <v-container>
+  <v-container class="">
     <v-row class="justify-center my-6">
       <h2 class="text-h5 text-md-h4 text-lg-h3 font-weight-regular text-uppercase">
         {{ product.title }}
       </h2>
     </v-row>
 
-    <v-row class="justify-center border">
-      <gallery/>  
+    <v-row class="">
+      <v-col xl="8" offset-xl="2" class="">
+        <gallery :productTitle="product.title"/>
+      </v-col>
     </v-row>
 
-    <v-row class="my-6">
+    <v-row
+      class="mt-10 mb-5"
+    >
+      <v-col
+        cols="10"
+        offset="1"
+        sm="8"
+        offset-sm="2"
+        lg="6"
+        offset-lg="3"
+      >
+        <h3
+          class="text-h6 text-md-h5"
+        >
+          Price: ${{ product.price }}
+        </h3>
+
+      </v-col>
+    </v-row>
+    <!-- <v-row
+      class="justify-center mt-10 mb-5"
+    >
+      <h3
+        class="text-h5"
+      >
+        Price: ${{ product.price }}
+      </h3>
+    </v-row> -->
+
+    <v-row class="mb-6 mt-n2">
       <v-col
         cols="10"
         offset="1"
@@ -20,6 +51,7 @@
         offset-lg="3"
       >
         <v-btn
+          class=""
           width="100%"
           dark
           color="primary"
@@ -37,7 +69,7 @@
         offset-lg="2"
 
       >
-        <p class="text-center">{{ product.description }}</p>
+        <p class="">{{ product.description }}</p>
       </v-col>
     </v-row>
   </v-container>

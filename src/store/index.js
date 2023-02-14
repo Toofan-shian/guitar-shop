@@ -29,10 +29,7 @@ export default new Vuex.Store({
       return pops;
     },
     getProductById: (state) => (id) => {
-
-      console.log(state.products)
       const product = state.products.find(p => p.id == id);
-      console.log(product)
       return product;
     }
   },
