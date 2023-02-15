@@ -13,7 +13,7 @@
       <v-toolbar-items v-else>
         <v-btn
           text
-          to="home"
+          to="/"
         >
           <v-icon left>mdi-home</v-icon>
           Home
@@ -35,16 +35,25 @@
           cart
         </v-btn>
       </v-toolbar-items>
-
-      <!-- <template v-slot:extension v-if="homePath">
-        <v-tabs align-center >
-          <v-tab>Tab 1</v-tab>
-          <v-tab>Tab 2</v-tab>
-          <v-tab>Tab 3</v-tab>
+      
+      <!-- TABS -->
+      <template v-slot:extension v-if="storePath">
+        <v-tabs centered v-model="tab">
+          <v-tab
+            v-for="item in tabs"
+            :key="item"
+          >
+            <span class="text-capitalize">{{ item }}</span>
+          </v-tab>
         </v-tabs>
-      </template> -->
+      </template>
+
     </v-app-bar>
 
+
+
+
+    <!-- Navigation Drawer -->
     <v-navigation-drawer
       absolute
       right
@@ -72,10 +81,15 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 
 export default {
   data() {
     return {
+      tab: 0,
+      tabs: ['All', 'Electric Guitars', 'Electric Bass', 'Acoustic & Nylon'],
+      path: '',
       drawer: false,
       links: [
         {title: 'HOME', path: '/', icon: 'mdi-home'},
@@ -85,8 +99,8 @@ export default {
     }
   },
   computed: {
-    homePath() {
-      return this.$router.currentRoute.path == '/home';
+    storePath() {
+      return this.path == '/store';
     },
     isXs() {
       if (this.$vuetify.breakpoint.name == 'xs') {
@@ -97,8 +111,25 @@ export default {
       return this.$vuetify.breakpoint.name
     }
   },
+  methods: {
+    ...mapMutations(['setProductCategory']),
+    setCategory() {
+      this.setProductCategory(this.tab)
+    },
+    setPath() {
+      this.path = this.$router.currentRoute.path
+    },
+  },
   mounted() {
-
+    this.setPath()
+  },
+  watch: {
+    $route(){
+      this.setPath()
+    },
+    tab(){
+      this.setCategory()
+    }
   }
 }
 </script>

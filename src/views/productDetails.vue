@@ -31,15 +31,6 @@
 
       </v-col>
     </v-row>
-    <!-- <v-row
-      class="justify-center mt-10 mb-5"
-    >
-      <h3
-        class="text-h5"
-      >
-        Price: ${{ product.price }}
-      </h3>
-    </v-row> -->
 
     <v-row class="mb-6 mt-n2">
       <v-col

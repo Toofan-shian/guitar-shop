@@ -5,9 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    productCategory: 'all',
     products: []
   },
   mutations: {
+    setProductCategory(state, num) {
+      let catName;
+      switch (num) {
+        case 0: catName = 'all'; break;
+        case 1: catName = 'electric'; break;
+        case 2: catName = 'bass'; break;
+        case 3: catName = 'acoustic'; break;
+        default: catName = 'all'
+      }
+      state.productCategory = catName;
+    },
     setAllProducts(state, products) {
       state.products = products
     }
