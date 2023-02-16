@@ -42,8 +42,9 @@
           <v-tab
             v-for="item in tabs"
             :key="item"
+            class="text-capitalize font-weight-bold"
           >
-            <span class="text-capitalize">{{ item }}</span>
+            {{ item }}
           </v-tab>
         </v-tabs>
       </template>
