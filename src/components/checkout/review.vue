@@ -36,7 +36,7 @@
     </v-checkbox>
 
 
-    <v-row no-gutters justify="space-between mt-2">
+    <v-row no-gutters class="justify-space-between mt-2">
       <v-btn
         text
         @click="prevStep"
@@ -50,11 +50,48 @@
         type="submit"
         :disabled="!infoAndTermsChecked"
         min-width="100px"
+        @click="showOverLay"
       >
         Pay
       </v-btn>
     </v-row>
 
+
+    <v-overlay
+      v-model="overlay"
+      opacity="0.75"
+    >
+      <div v-if="progress" class="d-flex">
+        <v-progress-circular
+          indeterminate
+          size="35"
+          class="mr-3"
+        ></v-progress-circular>
+        <div class="ml-3 text-h5">Order Proccessing...</div>
+      </div>
+
+      <v-card
+        class="mx-6"
+        v-if="thankYou"
+        rounded="lg"
+        elevation="10"
+      >
+        <v-card-actions class="justify-end">
+          <v-btn
+            icon
+            @click="closeOverLay"
+          >
+            <v-icon>
+              mdi-close
+            </v-icon>
+          </v-btn>
+        </v-card-actions>
+
+        <v-card-title class="text-lg-h5 text-capitalize">
+          Thanks for checking out this website
+        </v-card-title>
+      </v-card>
+    </v-overlay>
   </v-sheet>
 </template>
 
@@ -69,12 +106,34 @@ export default {
     return {
       infoCheck: false,
       fakeCheck: false,
+      overlay: false,
+      progress: false,
+      thankYou: false,
     }
   },
   computed: {
     infoAndTermsChecked() {
       return this.infoCheck && this.fakeCheck
     }
-  }
+  },
+  methods: {
+    showOverLay() {
+      this.overlay = true;
+      this.progress = true;
+      setTimeout(() => {
+        this.progress = false;
+        this.thankYou = true;
+      }, 2000)
+      setTimeout(() => {
+        this.overlay = false;
+        this.thankYou = false;
+      }, 6000)
+    },
+    closeOverLay() {
+      this.overlay = false;
+      this.thankYou = false;
+    }
+  },
+
 }
 </script>
