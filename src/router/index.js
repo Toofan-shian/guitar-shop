@@ -4,7 +4,7 @@ import home from '../views/home'
 import store from '../views/store'
 import cart from '../views/cart'
 import productDetails from '../views/productDetails'
-
+import checkout from '../views/checkout'
 
 Vue.use(VueRouter)
 
@@ -28,6 +28,11 @@ const routes = [
   name: 'productDetails',
   path: '/products/:id',
   component: productDetails,
+},
+{
+  name: 'checkout',
+  path: '/checkout',
+  component: checkout
 }
 ]
 

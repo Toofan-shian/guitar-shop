@@ -34,6 +34,7 @@
       <v-btn
         width="95%"
         color="primary"
+        to="/checkout"
       >
         checkout
       </v-btn>
