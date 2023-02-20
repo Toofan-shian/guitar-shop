@@ -46,6 +46,7 @@
           width="100%"
           dark
           color="primary"
+          @click="addToCart"
         >
           add to cart
         </v-btn>
@@ -87,7 +88,9 @@ export default {
     }
   },
   methods: {
-
+    addToCart() {
+      this.$store.state.snackbar.show = true;
+    }
   },
   mounted() {
 

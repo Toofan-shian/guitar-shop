@@ -6,7 +6,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productCategory: 'All Products',
-    products: []
+    products: [],
+    snackbar: {
+      show: true,
+      color: 'success',
+      massage: 'Item Added To Cart Successfully'
+    }
   },
   mutations: {
     setProductCategory(state, num) {

@@ -1,7 +1,7 @@
 <template>
-  <v-container class="border-b">
+  <v-container class="pt-6">
     <v-row
-      class="border"
+      class=""
     >
       <v-col
         sm="10"
