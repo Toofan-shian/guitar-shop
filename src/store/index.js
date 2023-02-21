@@ -42,7 +42,6 @@ export default new Vuex.Store({
   },
   getters: {
     getProductsByCategory: (state) => (cat) => {
-      console.log(state.products)
       if(cat == 'All Products') return state.products;
       let products = state.products.filter(p => p.type == cat)
       return products;

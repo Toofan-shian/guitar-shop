@@ -65,7 +65,7 @@
         xl="6"
       >
         <h3 class="text-h4 my-8 font-weight-light">{{ category }}</h3>
-        <v-row>
+        <v-row v-if="!showPlaceHolder">
           <v-col
             v-for="product in products"
             :key="product.id"
@@ -75,6 +75,13 @@
           >
             <verticalProduct :product="product"/>
           </v-col>
+        </v-row>
+
+        <v-row
+          v-else
+          class="text-center justify-center text-h6 text-md-h5 ma-0 pa-6 pink--text text--darken-4"
+          >
+          {{ productsPlaceHolder }}
         </v-row>
       </v-col>
     </v-row>
@@ -91,6 +98,7 @@ export default {
   },
   data() {
     return {
+      showPlaceHolder: false,
       products: [],
       category: 'All Products',
       priceRange: 0,
@@ -105,6 +113,11 @@ export default {
   },
   methods: {
     ...mapActions(['retrieveAllProducts']),
+    checkProductsLenght() {
+      if (this.products.length == 0) {
+        this.showPlaceHolder = true;
+      } else this.showPlaceHolder = false
+    },
     filterPrice() {
       switch(this.priceRange) {
         case 0: {
@@ -132,6 +145,7 @@ export default {
           break
         }
       }
+      this.checkProductsLenght()
     }
   },
   computed: {
@@ -139,8 +153,8 @@ export default {
     productCat() {
       return this.$store.state.productCategory
     },
-    title() {
-
+    productsPlaceHolder() {
+      return `No ${this.category} Was Found With Price ${this.radioItems[this.priceRange]}`
     }
   },
   watch: {
@@ -154,11 +168,11 @@ export default {
     }
   },
   beforeMount() {
-  },
-  mounted() {
     this.retrieveAllProducts().then(() => {
       this.products = this.getProductsByCategory(this.category)
     })
+  },
+  mounted() {
   }
 }
 </script>
