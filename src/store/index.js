@@ -8,7 +8,7 @@ export default new Vuex.Store({
     productCategory: 'All Products',
     products: [],
     snackbar: {
-      show: true,
+      show: false,
       color: 'success',
       massage: 'Item Added To Cart Successfully'
     }

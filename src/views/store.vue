@@ -26,21 +26,7 @@
             </v-radio-group>
           </v-card-text>
         </v-card>
-        
-        <!-- <v-card class="hidden-md-and-up hidden-xs">
-          <v-card-text>
-            <v-radio-group v-model="priceRange" row>
-              <v-radio
-                v-for="(item, i) in radioItems"
-                :key="item"
-                :value="i"
-                :label="item"
-              >
-              </v-radio>
-            </v-radio-group>
-          </v-card-text>
-        </v-card> -->
-        
+
 
         <v-expansion-panels class="hidden-md-and-up">
           <v-expansion-panel >
@@ -110,15 +96,43 @@ export default {
       priceRange: 0,
       radioItems: [
         'All',
-        'Below $50',
-        '$50 To $500',
-        '$500 To $2000',
+        'Below $500',
+        '$500 To $1000',
+        '$1000 To $2000',
         'Above $2000'
       ]
     }
   },
   methods: {
-    ...mapActions(['retrieveAllProducts'])
+    ...mapActions(['retrieveAllProducts']),
+    filterPrice() {
+      switch(this.priceRange) {
+        case 0: {
+          this.products = this.getProductsByCategory(this.category)
+          break
+        }
+        case 1: {
+          this.products = this.getProductsByCategory(this.category)
+            .filter(p => p.price <= 500)
+          break
+        }
+        case 2: {
+          this.products = this.getProductsByCategory(this.category)
+            .filter(p => p.price >= 500 && p.price <= 1000)
+          break
+        }
+        case 3: {
+          this.products = this.getProductsByCategory(this.category)
+            .filter(p => p.price >= 1000 && p.price <= 2000)
+          break
+        }
+        case 4: {
+          this.products = this.getProductsByCategory(this.category)
+            .filter(p => p.price >= 2000)
+          break
+        }
+      }
+    }
   },
   computed: {
     ...mapGetters(['getProductsByCategory']),
@@ -133,14 +147,17 @@ export default {
     productCat() {
       this.category = this.productCat;
       this.products = this.getProductsByCategory(this.productCat);
-      console.log(this.products)
+      this.filterPrice()
+    },
+    priceRange() {
+      this.filterPrice()
     }
   },
   beforeMount() {
   },
   mounted() {
     this.retrieveAllProducts().then(() => {
-      this.products = this.getProductsByCategory('All Products')
+      this.products = this.getProductsByCategory(this.category)
     })
   }
 }
