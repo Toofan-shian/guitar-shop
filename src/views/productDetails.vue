@@ -88,8 +88,19 @@ export default {
     }
   },
   methods: {
-    addToCart() {
+    async addToCart() {
       this.$store.state.snackbar.show = true;
+      let product = {product: {
+        itemId: this.product.id,
+        quantity: 1
+      }}
+      let response = await fetch('/1234/cartItems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(product)
+      })
     }
   },
   mounted() {
