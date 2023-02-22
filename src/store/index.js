@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     productCategory: 'All Products',
     products: [],
+    cartItems: [],
     snackbar: {
       show: false,
       color: 'success',
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     setAllProducts(state, products) {
       state.products = products
+    },
+    setCartItems(state, items){
+      state.cartItems = items
     }
   },
   actions: {
@@ -35,6 +39,15 @@ export default new Vuex.Store({
         const response = await fetch('products/all');
         const products = await response.json();
         context.commit('setAllProducts', products);
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async retrieveCartItems(context){
+      try {
+        let response = await fetch('1234/cartItems')
+        let cartItems = await response.json()
+        context.commit('setCartItems', cartItems)
       } catch (error) {
         console.log(error)
       }
@@ -53,6 +66,9 @@ export default new Vuex.Store({
     getProductById: (state) => (id) => {
       const product = state.products.find(p => p.id == id);
       return product;
+    },
+    getCartItems(state) {
+      return state.cartItems
     }
   },
   modules: {

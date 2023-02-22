@@ -79,11 +79,11 @@ export default {
 
   },
   computed: {
-    ...mapGetters(['getProductsByCategory'])
+    ...mapGetters(['getCartItems'])
   },
   mounted() {
-    this.$store.dispatch('retrieveAllProducts')
-      .then(() => this.products = this.getProductsByCategory('All Products'))
+    this.$store.dispatch('retrieveCartItems')
+      .then(() => this.products = this.getCartItems)
   }
 }
 </script>
