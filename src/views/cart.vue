@@ -67,7 +67,7 @@
           </h4>
         </v-row>
 
-        <orderSummary/>
+        <orderSummary :total="totalPrice"/>
       </v-col>
     </v-row>
   </v-container>
@@ -95,7 +95,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCartItems'])
+    ...mapGetters(['getCartItems']),
+    totalPrice() {
+      let total = this.products.reduce((prev, current) => prev + current.price, 0)
+      total = Math.round(total * 100)
+      total = Math.trunc(total)
+      total = total / 100
+      return total
+    }
   },
   mounted() {
     this.setProducts()

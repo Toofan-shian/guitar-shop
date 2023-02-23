@@ -4,14 +4,14 @@
       
       <v-row class="ma-0 my-2 text-uppercase justify-space-between text-subtitle-1">
         <span>Total</span>
-        <span>$2400</span>
+        <span>${{ total }}</span>
       </v-row>
       
       <v-divider></v-divider>
       
       <v-row class="ma-0 my-2 text-uppercase justify-space-between text-subtitle-1">
         <span>Shipping</span>
-        <span>$0.00</span>
+        <span>$8.00</span>
       </v-row>
       
       <v-divider></v-divider>
@@ -25,7 +25,7 @@
 
       <v-row class="ma-0 my-2 text-uppercase justify-space-between text-sm-subtitle-1 font-weight-bold">
         <span>Subtotal</span>
-        <span>$2400.00</span>
+        <span>${{ total + 8 }}</span>
       </v-row>
 
     </v-card-text>
@@ -45,6 +45,8 @@
 <script>
 
 export default {
-  
+  props: {
+    total: Number
+  }
 }
 </script>
