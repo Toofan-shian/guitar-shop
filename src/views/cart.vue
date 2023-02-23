@@ -12,20 +12,26 @@
         xl="5"
         offset-xl="2"
       >
-        <h4
-          class="
-            text-h4
-            text-sm-h5
-            text-md-h4
-            my-8
-            text-center
-          "
+        <v-row
+          no-gutters
+          justify="center"
+          class="py-8 my-0"
         >
-          Cart Items
-        </h4>
+          <h4
+            class="
+              text-h4
+              text-sm-h5
+              text-md-h4
+              text-center
+            "
+          >
+            Your Cart
+            <span class="ml-2 text-subtitle-2">{{ products.length }} Item{{ products.length > 1 ? 's' : ''}}</span>
+          </h4>
+        </v-row>
 
         <v-row
-          class=""
+          class="my-0"
           v-for="product in products"
           :key="product.id"
         >
@@ -44,17 +50,23 @@
         order="first"
         order-sm="last"
       >
-        <h4
-          class="
-            text-h4
-            text-sm-h5
-            text-md-h4
-            my-8
-            text-center
-          "
+        <v-row
+          no-gutters
+          justify="center"
+          class="py-8 my-0 mb-3"
         >
-          Order Summary
-        </h4>
+          <h4
+            class="
+              text-h4
+              text-sm-h5
+              text-md-h4
+              text-center
+            "
+          >
+            Order Summary
+          </h4>
+        </v-row>
+
         <orderSummary/>
       </v-col>
     </v-row>
