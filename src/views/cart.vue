@@ -31,6 +31,7 @@
         >
           <horizontalProduct
             :product="product"
+            @itemDeleted="setProducts"
           />
         </v-row>
       </v-col>
@@ -76,14 +77,16 @@ export default {
     }
   },
   methods: {
-
+    setProducts() {
+      this.$store.dispatch('retrieveCartItems')
+      .then(() => this.products = this.getCartItems)
+    }
   },
   computed: {
     ...mapGetters(['getCartItems'])
   },
   mounted() {
-    this.$store.dispatch('retrieveCartItems')
-      .then(() => this.products = this.getCartItems)
+    this.setProducts()
   }
 }
 </script>

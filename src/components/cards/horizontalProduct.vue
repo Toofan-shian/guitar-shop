@@ -28,6 +28,7 @@
               text
               small
               plain
+              @click="removeItem"
             >
               remove
             </v-btn>
@@ -50,6 +51,14 @@ export default {
   date() {
     return {
 
+    }
+  },
+  methods: {
+    async removeItem() {
+      let response = await fetch(`/1234/cartItems/${this.product.id}`, {
+        method: 'DELETE',
+      })
+      this.$emit('itemDeleted')
     }
   }
 }
