@@ -68,10 +68,20 @@ export default {
   },
   data() {
     return {
-      quantity: '1',
       quantitys: ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     }
   },
+  computed: {
+    quantity: {
+      get: function() {
+        let cartItem = this.$store.state.cartItems.find(p => p.itemId == this.product.id)
+        return String(cartItem.quantity)
+      },
+      set: function(value) {
+        this.$emit('quantityChange', {id: this.product.id, quantity: +value})
+      }
+    }
+  },  
   methods: {
     async removeItem() {
       let response = await fetch(`/1234/cartItems/${this.product.id}`, {
@@ -81,9 +91,7 @@ export default {
     }
   },
   watch: {
-    quantity() {
-      this.$emit('quantityChange', {id: this.product.id, quantity: this.quantity})
-    }
+
   }
 }
 </script>

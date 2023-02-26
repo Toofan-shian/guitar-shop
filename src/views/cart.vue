@@ -107,19 +107,17 @@ export default {
       })
 
       this.setCartProducts()
-        .then(this.setPrice())
+        .then(() => this.setPrice())
     },
     async setCartProducts() {
-      this.$store.dispatch('retrieveAllProducts')
+      await this.$store.dispatch('retrieveAllProducts')
         .then(() => this.$store.dispatch('retrieveCartItems'))
         .then(() => this.getCartProducts)
         .then((products) => this.products = products)
         .then(() => this.getCartItems)
         .then((items) => this.cartItems = items)
-        // .then(() => console.log(this.cartItems))
     },
-    setPrice() {
-      console.log(this.cartItems)
+    async setPrice() {
       let total = this.cartItems.reduce((prev, current) => {
         let currentProduct = this.products.find(p => p.id == current.itemId)
         let currentPrice = currentProduct.price * current.quantity;
@@ -128,8 +126,8 @@ export default {
       total = Math.round(total * 100)
       total = Math.trunc(total)
       total = total / 100
-
       this.totalPrice = total;
+      return
     }
   },
   computed: {
