@@ -68,7 +68,12 @@ export default new Vuex.Store({
       return product;
     },
     getCartItems(state) {
-      return state.cartItems
+      return new Promise((res, rej) => res(state.cartItems))
+    },
+    async getCartProducts(state) {
+      let productIds = state.cartItems.map(item => item.itemId)
+      let cartProducts = productIds.map(id => state.products.find(p => p.id == id))
+      return cartProducts
     }
   },
   modules: {

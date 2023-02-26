@@ -9,7 +9,7 @@
 
     <v-snackbar
       v-model="$store.state.snackbar.show"
-      timeout="6000"
+      timeout="2000"
       :color="$store.state.snackbar.color"
       top
       right
@@ -24,6 +24,7 @@
         <v-btn
           icon
           class="ma-0 pa-0 mr-n4"
+          @click="closeSnack"
         >
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -43,6 +44,11 @@ export default {
   data: () => ({
     
   }),
+  methods: {
+    closeSnack() {
+      this.$store.state.snackbar.show = false
+    }
+  }
 };
 </script>
 

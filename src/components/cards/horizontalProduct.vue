@@ -12,28 +12,46 @@
       </v-col>
 
       <v-col class=" pa-0 d-flex  flex-column" cols="8">
-        <v-card-title class="pa-2 text-sm-subtitle-1 text-md-h6">
+        <v-card-title class="px-2 pt-1 pb-0 text-sm-subtitle-1 text-md-h6">
           {{ product.title }}
         </v-card-title>
 
-        <v-card-subtitle class="px-2 pb-2 mt-1">
+        <v-card-subtitle class="px-2 pb-1 mt-1">
           ${{ product.price }}
         </v-card-subtitle>
 
-        <v-card-actions>
-          <v-row class="ma-0 px-3 justify-end">
+        
+        <v-row class=" ma-0 mt-2 justify-space-between">
+          
+          <v-col
+            cols="5"
+          >
+          <v-select
+            style=""
+            class="py-0 my-0"
+            label="Quantity"
+            v-model="quantity"
+            :items="quantitys"
+            dense
+            hide-details
+          ></v-select>
+          </v-col>
 
-            <v-btn
-              class="pa-0"
-              text
-              small
-              plain
-              @click="removeItem"
-            >
-              remove
-            </v-btn>
-          </v-row>
-        </v-card-actions>
+          <v-col
+            cols="7"
+            class="d-flex justify-end"
+          >
+          <v-btn
+            class="pa-0"
+            text
+            small
+            plain
+            @click="removeItem"
+          >
+            remove
+          </v-btn>
+          </v-col>
+        </v-row>
 
       </v-col>
     </v-row>
@@ -48,9 +66,10 @@ export default {
   props: {
     product: Object
   },
-  date() {
+  data() {
     return {
-
+      quantity: '1',
+      quantitys: ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     }
   },
   methods: {
@@ -59,6 +78,11 @@ export default {
         method: 'DELETE',
       })
       this.$emit('itemDeleted')
+    }
+  },
+  watch: {
+    quantity() {
+      this.$emit('quantityChange', {id: this.product.id, quantity: this.quantity})
     }
   }
 }

@@ -21,7 +21,7 @@
 
         <v-btn
           text
-          to="store"
+          to="/store"
         >
           <v-icon left>mdi-store</v-icon>
           Store
@@ -29,7 +29,7 @@
 
         <v-btn
           text
-          to="cart"
+          to="/cart"
         >
           <v-icon left>mdi-cart</v-icon>
           cart

@@ -37,7 +37,8 @@
         >
           <horizontalProduct
             :product="product"
-            @itemDeleted="setProducts"
+            @quantityChange="quantityChange"
+            @itemDeleted="itemDeleted"
           />
         </v-row>
       </v-col>
@@ -85,27 +86,63 @@ export default {
   },
   data() {
     return {
+      totalPrice: 0,
       products: [],
+      cartItems: [],
     }
   },
   methods: {
-    setProducts() {
-      this.$store.dispatch('retrieveCartItems')
-      .then(() => this.products = this.getCartItems)
-    }
-  },
-  computed: {
-    ...mapGetters(['getCartItems']),
-    totalPrice() {
-      let total = this.products.reduce((prev, current) => prev + current.price, 0)
+    itemDeleted() {
+      this.setCartProducts()
+    },
+    async quantityChange({id, quantity}) {
+      let product = {product: {itemId : id, quantity}}
+
+      let response = await fetch('/1234/cartItems', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(product)
+      })
+
+      this.setCartProducts()
+        .then(this.setPrice())
+    },
+    async setCartProducts() {
+      this.$store.dispatch('retrieveAllProducts')
+        .then(() => this.$store.dispatch('retrieveCartItems'))
+        .then(() => this.getCartProducts)
+        .then((products) => this.products = products)
+        .then(() => this.getCartItems)
+        .then((items) => this.cartItems = items)
+        // .then(() => console.log(this.cartItems))
+    },
+    setPrice() {
+      console.log(this.cartItems)
+      let total = this.cartItems.reduce((prev, current) => {
+        let currentProduct = this.products.find(p => p.id == current.itemId)
+        let currentPrice = currentProduct.price * current.quantity;
+        return prev + currentPrice;
+      }, 0)
       total = Math.round(total * 100)
       total = Math.trunc(total)
       total = total / 100
-      return total
+
+      this.totalPrice = total;
     }
   },
+  computed: {
+    ...mapGetters(['getCartItems', 'getCartProducts']),
+  },
   mounted() {
-    this.setProducts()
-  }
+    this.setCartProducts()
+      .then(() => this.setPrice())
+  },
+  watch: {
+    cartItems() {
+      this.setPrice()
+    }
+  },
 }
 </script>
