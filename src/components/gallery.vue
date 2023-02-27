@@ -7,34 +7,34 @@
         v-model="model"
         :show-arrows="false"
         hide-delimiters
-        class=""
-        :height="carouselHeight ? carouselHeight : 'auto'"
+        class="my-lg-5"
+        :height="height"
       >
         <v-carousel-item
           v-for="name in imageNames"
           :key="name"
           class=""
+          height="100%"
         >
-          <div class="pa-4 img-div">
-            <v-img
-              ref="img"
-              class=""
-              :src="`/guitar-shop/${productTitle}/gallery/${name}.jpg`"
-
-            >
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
+          <v-img
+            ref="img"
+            class=""
+            :src="`/guitar-shop/${productTitle}/gallery/${name}.jpg`"
+            height="100%"
+            contain
+          >
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
                 >
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  >
-                  </v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-          </div>
+                </v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
         </v-carousel-item>
       </v-carousel>
     </v-row>
@@ -72,8 +72,13 @@ export default {
   },
   computed: {
     height() {
-      let img = this.$refs.img
-      console.log(img)
+      switch(this.$vuetify.breakpoint.name) {
+        case 'xs': return 250;
+        case 'sm': return 318;
+        case 'md': return 350;
+        case 'lg': return 355;
+        case 'xl': return 360;
+      }
     },
     imgSize() {
       switch (this.$vuetify.breakpoint.name) {
@@ -83,11 +88,7 @@ export default {
     }
   },
   methods: {
-    // setCarouselHeight () {
-    //   var item = document.getElementsByClassName('v-image__image--cover')
-    //   console.log(item[0].clientHeight)
-    //   this.carouselHeight = item[0].clientHeight + 'px'
-    // }
+
   },
   mounted() {
 
