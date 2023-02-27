@@ -35,6 +35,7 @@
         width="95%"
         color="primary"
         to="/checkout"
+        :disabled="!productAdded"
       >
         checkout
       </v-btn>
@@ -46,6 +47,7 @@
 
 export default {
   props: {
+    productAdded: Boolean,
     total: Number
   }
 }

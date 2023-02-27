@@ -31,6 +31,7 @@
         </v-row>
 
         <v-row
+          
           class="my-0"
           v-for="product in products"
           :key="product.id"
@@ -40,6 +41,21 @@
             @quantityChange="quantityChange"
             @itemDeleted="itemDeleted"
           />
+        </v-row>
+
+        <v-row
+          v-if="!productAdded"
+          class="text-center justify-center text-h6 text-md-h5 ma-0 pa-6 pink--text text--darken-4"
+        >
+          <div>There Is No Product In Your Cart</div>
+          <v-btn
+            outlined
+            color="primary"
+            class="mt-4"
+            to="/store"
+          >
+            Explore Products
+          </v-btn>
         </v-row>
       </v-col>
 
@@ -68,7 +84,7 @@
           </h4>
         </v-row>
 
-        <orderSummary :total="totalPrice"/>
+        <orderSummary :total="totalPrice" :productAdded="productAdded"/>
       </v-col>
     </v-row>
   </v-container>
@@ -86,6 +102,7 @@ export default {
   },
   data() {
     return {
+      showPlaceHolder: false,
       totalPrice: 0,
       products: [],
       cartItems: [],
@@ -132,6 +149,10 @@ export default {
   },
   computed: {
     ...mapGetters(['getCartItems', 'getCartProducts']),
+    productAdded() {
+      return this.products.length > 0;
+
+    }
   },
   mounted() {
     this.setCartProducts()
@@ -140,6 +161,11 @@ export default {
   watch: {
     cartItems() {
       this.setPrice()
+
+      if (this.products.length < 1) {
+        this.showPlaceHolder = true;
+      }
+      else  this.showPlaceHolder = false;
     }
   },
 }
