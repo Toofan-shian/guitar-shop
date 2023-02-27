@@ -36,12 +36,13 @@ export default new Vuex.Store({
   actions: {
     async retrieveAllProducts(context) {
       try {
-        const response = await fetch('products/all');
+        const response = await fetch('/products/all');
         const products = await response.json();
         context.commit('setAllProducts', products);
       } catch (error) {
         console.log(error)
       }
+      return;
     },
     async retrieveCartItems(context){
       try {

@@ -44,6 +44,7 @@
         <v-btn
           class=""
           width="100%"
+          height="170%"
           dark
           color="primary"
           @click="addToCart"
@@ -68,7 +69,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {mapGetters} from 'vuex';
 import gallery from '@/components/gallery.vue';
 
 export default {
@@ -77,17 +78,27 @@ export default {
   },
   data() {
     return {
-
+      product: {},
     }
   },
 
   computed: {
     ...mapGetters(['getProductById']),
-    product() {
-      return this.getProductById(this.$route.params.id)
-    }
+    // product() {
+    //   return this.getProductById(this.$route.params.id)
+    // }
   },
   methods: {
+    async setProduct() {
+      let products = this.$store.state.products;
+      if (products.length == 0) {
+        this.$store.dispatch('retrieveAllProducts')
+          .then(() => this.product = this.getProductById(this.$route.params.id))
+      } else {
+        this.product = this.getProductById(this.$route.params.id)
+      }
+      
+    },
     async addToCart() {
       this.$store.state.snackbar.show = true;
       let product = {product: {
@@ -104,7 +115,7 @@ export default {
     }
   },
   mounted() {
-
+    this.setProduct()
   }
 }
 </script>
