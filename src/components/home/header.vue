@@ -5,6 +5,32 @@
       max-height="500"
       
     >
+      <v-container fill-height fluid>
+        <v-row
+          class=" ma-0"
+          height="100%"
+          float
+        >
+          <v-col
+            class=""
+            cols="4 text-center"
+          >
+            <h3
+              class="
+                text-uppercase
+                mb-1 mb-sm-3 mb-md-8 
+                text-subtitle-1 text-sm-h6 text-md-h5 text-lg-h4 text-xl-h3
+              "
+              style="text-shadow: 1px 1px 5px rgba(255, 15, 15, 0.21)"
+            >
+              find your first fender
+            </h3>
+            <div
+              class="text-caption text-sm-body-1 text-lg-subtitle-1 text-xl-h6"
+            >We've made it easier than ever to get started.</div>
+          </v-col>
+        </v-row>
+      </v-container>
     <template v-slot:placeholder>
       <v-row
         class="fill-height ma-0"
