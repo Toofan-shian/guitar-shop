@@ -36,13 +36,14 @@
   
             <v-expansion-panel-content>
               <v-card outlined>
-                <v-card-text>
-                  <v-radio-group v-model="priceRange" row>
+                <v-card-text class="">
+                  <v-radio-group v-model="priceRange" row class="ma-0 pa-0" hide-details>
                     <v-radio
                       v-for="(item, i) in radioItems"
                       :key="item"
                       :value="i"
                       :label="item"
+                      class="my-2"
                     >
                     </v-radio>
                   </v-radio-group>

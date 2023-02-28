@@ -122,7 +122,7 @@ export default {
       setTimeout(() => {
         this.overlay = false;
         this.thankYou = false;
-      }, 3333)
+      }, 4321)
     },
     closeOverLay() {
       this.overlay = false;
