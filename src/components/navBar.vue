@@ -38,13 +38,13 @@
         </v-btn>
       </v-toolbar-items>
       
-      <!-- TABS -->
+
       <template v-slot:extension v-if="storePath">
         <v-tabs centered v-model="tab">
           <v-tab
             v-for="item in tabs"
             :key="item"
-            class="text-capitalize font-weight-bold"
+            class="text-capitalize font-weight-bold text-body-2 text-md-body-1 text-lg-h6"
           >
             {{ item }}
           </v-tab>
@@ -52,15 +52,15 @@
       </template>
 
     </v-app-bar>
+    
 
 
-
-
-    <!-- Navigation Drawer -->
     <v-navigation-drawer
+      app
       absolute
       right
       v-model="drawer"
+      style="z-index: 1000;"
     >
       <v-list dense>
         <v-list-item

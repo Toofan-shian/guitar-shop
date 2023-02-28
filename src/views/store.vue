@@ -28,7 +28,7 @@
         </v-card>
 
 
-        <v-expansion-panels class="hidden-md-and-up">
+        <v-expansion-panels class="hidden-md-and-up" app>
           <v-expansion-panel >
             <v-expansion-panel-header>
               <h4>Filter Price</h4>
