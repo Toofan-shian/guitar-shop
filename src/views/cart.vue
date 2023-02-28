@@ -31,7 +31,6 @@
         </v-row>
 
         <v-row
-          
           class="my-0"
           v-for="product in products"
           :key="product.id"
@@ -44,7 +43,7 @@
         </v-row>
 
         <v-row
-          v-if="!productAdded"
+          v-if="showPlaceHolder"
           class="text-center justify-center text-h6 text-md-h5 ma-0 pa-6 pink--text text--darken-4"
         >
           <div>There Is No Product In Your Cart</div>
@@ -56,6 +55,24 @@
           >
             Explore Products
           </v-btn>
+        </v-row>
+
+        <v-row
+          class=" justify-center"
+          v-if="showProgress"
+        >
+          <v-progress-circular
+            indeterminate
+            color="#454545"
+            size="38"
+          >
+          </v-progress-circular>
+          <div
+            class=" ml-4 text-h6 text-md-h5"
+            style="height: fit-content;"
+          >
+            Getting Cart Items...
+          </div>
         </v-row>
       </v-col>
 
@@ -102,7 +119,7 @@ export default {
   },
   data() {
     return {
-      showPlaceHolder: false,
+      showProgress: true,
       totalPrice: 0,
       products: [],
       cartItems: [],
@@ -124,7 +141,6 @@ export default {
       })
 
       this.setCartProducts()
-        .then(() => this.setPrice())
     },
     async setCartProducts() {
       await this.$store.dispatch('retrieveAllProducts')
@@ -149,23 +165,18 @@ export default {
   },
   computed: {
     ...mapGetters(['getCartItems', 'getCartProducts']),
-    productAdded() {
-      return this.products.length > 0;
+    showPlaceHolder() {
+      return (this.products.length == 0 && this.showProgress == false);
 
     }
   },
   mounted() {
     this.setCartProducts()
-      .then(() => this.setPrice())
+      .then(() => this.showProgress = false)
   },
   watch: {
     cartItems() {
       this.setPrice()
-
-      if (this.products.length < 1) {
-        this.showPlaceHolder = true;
-      }
-      else  this.showPlaceHolder = false;
     }
   },
 }
