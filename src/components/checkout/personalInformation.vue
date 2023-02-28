@@ -78,9 +78,7 @@ export default {
         first: [value => (value || '').length > 0 || 'Please Enter Your Name'],
         last: [value => (value || '').length > 0 || 'Please Enter Your Last Name'],
         email: [value => (value || '').length > 0 || 'Please Enter Your Email'],
-        phone: [
-          value => value.length >= 10 || 'At Least 10 Digits'
-        ]
+        phone: [value => (value || '').length > 0 || 'Please Enter Your Phone Number']
       }
     }
   },
@@ -90,7 +88,7 @@ export default {
         this.form['First Name'] &&
         this.form['Last Name'] &&
         this.form.email &&
-        this.form.phone && this.form.phone.length >= 10
+        this.form.phone
       )
     }
   },

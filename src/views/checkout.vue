@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      step: 3,
+      step: 1,
       form: {
         "First Name": '',
         "Last Name": '',

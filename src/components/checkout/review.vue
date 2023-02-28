@@ -22,13 +22,6 @@
     <v-divider></v-divider>
 
     <v-checkbox
-      v-model="infoCheck"
-      label="My Information Is Correct"
-      hide-details
-      class="ml-2"
-    >
-    </v-checkbox>
-    <v-checkbox
       v-model="fakeCheck"
       label="I Understand That This Is A Fake Website"
       class="ml-2"
@@ -76,20 +69,23 @@
         rounded="lg"
         elevation="10"
       >
-        <v-card-actions class="justify-end">
-          <v-btn
-            icon
-            @click="closeOverLay"
-          >
-            <v-icon>
-              mdi-close
-            </v-icon>
-          </v-btn>
-        </v-card-actions>
+        <v-row class="justify-space-between">
+          <v-card-title class="text-lg-h5 text-capitalize ml-5 mr-8">
+            Thanks for checking out this website
+          </v-card-title>
 
-        <v-card-title class="text-lg-h5 text-capitalize">
-          Thanks for checking out this website
-        </v-card-title>
+          <v-card-actions class="mr-5">
+            <v-btn
+              icon
+              @click="closeOverLay"
+            >
+              <v-icon>
+                mdi-close
+              </v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-row>
+
       </v-card>
     </v-overlay>
   </v-sheet>
@@ -104,7 +100,6 @@ export default {
   },
   data() {
     return {
-      infoCheck: false,
       fakeCheck: false,
       overlay: false,
       progress: false,
@@ -113,7 +108,7 @@ export default {
   },
   computed: {
     infoAndTermsChecked() {
-      return this.infoCheck && this.fakeCheck
+      return this.fakeCheck
     }
   },
   methods: {
@@ -127,7 +122,7 @@ export default {
       setTimeout(() => {
         this.overlay = false;
         this.thankYou = false;
-      }, 6000)
+      }, 3333)
     },
     closeOverLay() {
       this.overlay = false;
