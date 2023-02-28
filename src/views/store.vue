@@ -28,7 +28,7 @@
         </v-card>
 
 
-        <v-expansion-panels class="hidden-md-and-up" app>
+        <v-expansion-panels class="hidden-md-and-up mt-4">
           <v-expansion-panel >
             <v-expansion-panel-header>
               <h4>Filter Price</h4>
@@ -64,7 +64,7 @@
         md="9"
         xl="6"
       >
-        <h3 class="text-h4 my-8 font-weight-light">{{ category }}</h3>
+        <h3 class="text-h4 mb-8 mt-2 mt-md-8 font-weight-light">{{ category }}</h3>
         <v-row v-if="!showPlaceHolder">
           <v-col
             v-for="product in products"
