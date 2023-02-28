@@ -1,12 +1,24 @@
 <template>
   <div>
     <v-app-bar>
-      <v-toolbar-title>
+      <v-toolbar-title class="d-flex align-center toolbar-title" @click="$router.replace('/')">
         <v-img
           src="logoBlackCropped.jpg"
+          class="mr-1"
+          height="36"
+          width="160"
+          contain
+          
+        ></v-img>
+        <v-img
+          src="favicon.ico"
+          width="30"
+          height="31"
+          contain
+          classs="border-b"
         ></v-img>
       </v-toolbar-title>
-      <span class="ml-4">{{ breakName }}</span>
+      <!-- <span class="ml-4">{{ breakName }}</span> -->
 
       <v-spacer></v-spacer>
 
@@ -135,3 +147,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.toolbar-title {
+  cursor: pointer;
+}
+
+</style>
