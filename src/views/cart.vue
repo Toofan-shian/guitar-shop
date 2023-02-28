@@ -43,18 +43,21 @@
         </v-row>
 
         <v-row
+          no-gutters
           v-if="showPlaceHolder"
-          class="text-center justify-center text-h6 text-md-h5 ma-0 pa-6 pink--text text--darken-4"
+          class="text-h6 text-md-h5 ma-0 pink--text text--darken-4"
         >
-          <div>There Is No Product In Your Cart</div>
-          <v-btn
-            outlined
-            color="primary"
-            class="mt-4"
-            to="/store"
-          >
-            Explore Products
-          </v-btn>
+          <v-col cols="12" xl="8" offset-xl="2" class="d-flex flex-column justify-center align-center">
+            <div>There Is No Product In Your Cart</div>
+            <v-btn
+              outlined
+              color="primary"
+              class="mt-4"
+              to="/store"
+            >
+              Explore Products
+            </v-btn>
+          </v-col>
         </v-row>
 
         <v-row

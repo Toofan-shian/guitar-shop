@@ -56,7 +56,6 @@
 
 
     <v-navigation-drawer
-      app
       absolute
       right
       v-model="drawer"
