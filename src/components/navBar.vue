@@ -2,7 +2,9 @@
   <div>
     <v-app-bar>
       <v-toolbar-title>
-        Guitar-Shop
+        <v-img
+          src="logoBlackCropped.jpg"
+        ></v-img>
       </v-toolbar-title>
       <span class="ml-4">{{ breakName }}</span>
 

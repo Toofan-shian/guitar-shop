@@ -101,7 +101,7 @@
           </h4>
         </v-row>
 
-        <orderSummary :total="totalPrice" :productAdded="productAdded"/>
+        <orderSummary :total="totalPrice" :productAdded="products.length > 0"/>
       </v-col>
     </v-row>
   </v-container>

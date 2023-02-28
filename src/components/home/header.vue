@@ -19,7 +19,7 @@
               class="
                 text-uppercase
                 mb-1 mb-sm-3 mb-md-8 
-                text-subtitle-1 text-sm-h6 text-md-h5 text-lg-h4 text-xl-h3
+                text-h6 text-sm-h5 text-md-h4 text-lg-h3 text-xl-h2
               "
               style="text-shadow: 1px 1px 5px rgba(255, 15, 15, 0.21)"
             >
