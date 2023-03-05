@@ -23,7 +23,7 @@
       <v-btn
         width="95%"
         outlined
-        color="primary"
+        color="primary darken-2"
         @click="viewDetails"
       >
         view details

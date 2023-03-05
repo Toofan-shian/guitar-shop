@@ -64,17 +64,26 @@
       </div>
 
       <v-card
-        class="mx-6"
+        class="mx-6 py-3 px-4"
         v-if="thankYou"
         rounded="lg"
         elevation="10"
       >
-        <v-row class="justify-space-between">
-          <v-card-title class="text-lg-h5 text-capitalize ml-5 mr-8">
+        <v-row class="align-center" no-gutters>
+          <v-col
+            cols="11"
+            class=""
+          >
+          <v-card-title class="text-subtitle-1 text-sm-h6 text-capitalize pa-0 mx-sm-3">
             Thanks for checking out this website
           </v-card-title>
+          </v-col>
 
-          <v-card-actions class="mr-5">
+          <v-col
+            cols="1"
+            class=""
+          >
+          <v-card-actions class="pa-0">
             <v-btn
               icon
               @click="closeOverLay"
@@ -84,6 +93,8 @@
               </v-icon>
             </v-btn>
           </v-card-actions>
+          </v-col>
+
         </v-row>
 
       </v-card>

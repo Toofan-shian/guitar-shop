@@ -39,7 +39,7 @@
       </v-carousel>
     </v-row>
 
-    <v-row class="justify-center mt-2">
+    <v-row class="justify-center mt-7 mt-lg-2">
       <div
         v-for="(name, i) in imageNames"
         :key="name"
@@ -73,10 +73,10 @@ export default {
   computed: {
     height() {
       switch(this.$vuetify.breakpoint.name) {
-        case 'xs': return 250;
-        case 'sm': return 318;
-        case 'md': return 350;
-        case 'lg': return 355;
+        case 'xs': return 144;
+        case 'sm': return 200;
+        case 'md': return 300;
+        case 'lg': return 333;
         case 'xl': return 360;
       }
     },

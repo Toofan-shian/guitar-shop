@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar>
-      <v-toolbar-title class="d-flex align-center toolbar-title" @click="$router.replace('/')">
+      <v-toolbar-title class=" d-flex align-center toolbar-title" @click="$router.replace('/')">
         <v-img
           src="logoBlackCropped.jpg"
           class="mr-1"
@@ -10,13 +10,15 @@
           contain
           
         ></v-img>
-        <v-img
-          src="favicon.ico"
-          width="30"
-          height="31"
-          contain
-          classs="border-b"
-        ></v-img>
+        <div class="mb-1 ml-1">
+          <v-img
+            src="favicon.ico"
+            width="33"
+            height="36"
+            contain
+            classs=""
+          ></v-img>
+        </div>
       </v-toolbar-title>
       <!-- <span class="ml-4">{{ breakName }}</span> -->
 
