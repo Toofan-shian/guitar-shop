@@ -73,7 +73,7 @@ export default {
   computed: {
     height() {
       switch(this.$vuetify.breakpoint.name) {
-        case 'xs': return 144;
+        case 'xs': return 118;
         case 'sm': return 200;
         case 'md': return 300;
         case 'lg': return 333;
@@ -82,7 +82,8 @@ export default {
     },
     imgSize() {
       switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 60;
+        case 'xs': return 55;
+        case 'sm': return 80;
       }
       return 100
     }

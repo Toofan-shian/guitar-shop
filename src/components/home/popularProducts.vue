@@ -12,8 +12,8 @@
         xl="8"
         offset-xl="2"
       >
-        <h2
-          class="display-1"
+        <h3
+          class="text-h5 text-sm-h4"
         >
           Popular Products
           <v-btn
@@ -24,7 +24,7 @@
           >
             view all
           </v-btn>
-        </h2>
+        </h3>
       </v-col>
     </v-row>
 

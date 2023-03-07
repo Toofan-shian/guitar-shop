@@ -1,7 +1,7 @@
 <template>
   <v-container class="">
     <v-row class="justify-center my-6">
-      <h2 class="text-h6 text-sm-h5 text-md-h4 text-lg-h3 font-weight-regular text-uppercase">
+      <h2 class="text-h6 text-sm-h5 text-md-h4 text-lg-h3 font-weight-regular text-uppercase text-center">
         {{ product.title }}
       </h2>
     </v-row>
@@ -89,6 +89,9 @@ export default {
     // }
   },
   methods: {
+    goTop() {
+      document.body.scrollTo(0, 0)
+    },
     async setProduct() {
       let products = this.$store.state.products;
       if (products.length == 0) {
@@ -116,6 +119,7 @@ export default {
   },
   mounted() {
     this.setProduct()
+    this.goTop()
   }
 }
 </script>

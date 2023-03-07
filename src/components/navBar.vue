@@ -1,14 +1,13 @@
 <template>
   <div>
     <v-app-bar app>
-      <v-toolbar-title class=" d-flex align-center toolbar-title" @click="$router.replace('/')">
+      <v-toolbar-title class="d-none d-md-flex align-center toolbar-title" @click="$router.replace('/')">
         <v-img
           src="logoBlackCropped.jpg"
-          class="mr-1"
+          class="mr-1 d-none d-sm-flex"
           height="36"
           width="160"
           contain
-          
         ></v-img>
         <div class="mb-1 ml-1">
           <v-img
@@ -16,11 +15,30 @@
             width="33"
             height="36"
             contain
+            classs="d-none d-sm-flex"
+          ></v-img>
+        </div>
+      </v-toolbar-title>
+
+      <v-toolbar-title class="d-flex d-md-none align-center toolbar-title" @click="$router.replace('/')">
+       <v-img
+          src="logoBlackCropped.jpg"
+          class="mr-1"
+          height="28.8"
+          width="128"
+          contain
+        ></v-img>
+        <div class="mb-1 ml-1">
+          <v-img
+            src="favicon.ico"
+            width="26.4"
+            height="28.8"
+            contain
             classs=""
           ></v-img>
         </div>
       </v-toolbar-title>
-      <span class="ml-4">{{ breakName }}</span>
+      <!-- <span class="ml-4">{{ breakName }}</span> -->
 
       <v-spacer></v-spacer>
 
@@ -76,7 +94,7 @@
       v-model="drawer"
       style="z-index: 50;"
     >
-      <v-list dense>
+      <v-list>
         <v-list-item
           v-for="link in links"
           :key="link.title"
