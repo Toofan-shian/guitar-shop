@@ -5,7 +5,7 @@
       max-height="500"
       
     >
-      <v-container fill-height fluid>
+      <v-container fill-height fluid v-if="this.$vuetify.breakpoint.name != 'xs'">
         <v-row
           class=" ma-0"
           height="100%"
@@ -19,7 +19,7 @@
               class="
                 text-uppercase
                 mb-1 mb-sm-3 mb-md-8 
-                text-h6 text-sm-h5 text-md-h4 text-lg-h3 text-xl-h2
+                text-sm-h5 text-md-h4 text-lg-h3 text-xl-h2
               "
               style="text-shadow: 1px 1px 5px rgba(255, 15, 15, 0.21)"
             >

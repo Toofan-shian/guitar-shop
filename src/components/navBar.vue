@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar>
+    <v-app-bar app>
       <v-toolbar-title class=" d-flex align-center toolbar-title" @click="$router.replace('/')">
         <v-img
           src="logoBlackCropped.jpg"
@@ -20,7 +20,7 @@
           ></v-img>
         </div>
       </v-toolbar-title>
-      <!-- <span class="ml-4">{{ breakName }}</span> -->
+      <span class="ml-4">{{ breakName }}</span>
 
       <v-spacer></v-spacer>
 
@@ -54,7 +54,7 @@
       
 
       <template v-slot:extension v-if="storePath">
-        <v-tabs centered v-model="tab">
+        <v-tabs centered v-model="tab" show-arrows>
           <v-tab
             v-for="item in tabs"
             :key="item"
@@ -70,10 +70,11 @@
 
 
     <v-navigation-drawer
-      absolute
+      app
+      disable-resize-watcher
       right
       v-model="drawer"
-      style="z-index: 1000;"
+      style="z-index: 50;"
     >
       <v-list dense>
         <v-list-item

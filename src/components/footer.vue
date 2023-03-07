@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark class="pa-4">
+  <v-footer dark app class="pa-4">
     <h3
       class="text-subtitle-1"
     >
